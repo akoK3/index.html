@@ -1,5 +1,565 @@
-<html>
-  <body>
-    hello world
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Akaki Jvarsheishvili — ML/AI engineer, quantitative researcher, and computer science student building machine-learning systems, financial research pipelines, and backend applications." />
+  <meta name="author" content="Akaki Jvarsheishvili" />
+  <meta name="theme-color" content="#09111f" />
+  <title>Akaki Jvarsheishvili | ML/AI Engineer</title>
+  <style>
+    :root {
+      --bg: #07101c;
+      --bg-soft: #0b1626;
+      --panel: rgba(14, 28, 47, 0.74);
+      --panel-solid: #0f1d31;
+      --text: #f4f7fb;
+      --muted: #aeb9ca;
+      --accent: #7dd3fc;
+      --accent-2: #a7f3d0;
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 18px 55px rgba(0,0,0,.28);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(56,189,248,.10), transparent 26%),
+        radial-gradient(circle at 88% 18%, rgba(52,211,153,.08), transparent 25%),
+        linear-gradient(180deg, #07101c 0%, #081321 46%, #060d17 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7,16,28,.76);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: -.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(125,211,252,.22), rgba(167,243,208,.18));
+      border: 1px solid rgba(125,211,252,.25);
+      color: var(--accent);
+      font-size: .88rem;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero { padding: 94px 0 68px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent-2);
+      font-weight: 700;
+      font-size: .86rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      opacity: .8;
+    }
+
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: .96;
+      letter-spacing: -.065em;
+      max-width: 850px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 17px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      font-size: .94rem;
+      transition: .18s ease;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #8ad8f7, #a7f3d0);
+      color: #06111d;
+      border-color: transparent;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(125,211,252,.38); }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(17,34,57,.92), rgba(11,23,39,.95));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -70px -90px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(125,211,252,.09);
+      filter: blur(3px);
+    }
+
+    .monogram {
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      font-weight: 850;
+      color: var(--accent);
+      background: rgba(125,211,252,.09);
+      border: 1px solid rgba(125,211,252,.22);
+      margin-bottom: 24px;
+    }
+
+    .quick-list { display: grid; gap: 14px; }
+    .quick-item { padding-top: 14px; border-top: 1px solid var(--line); }
+    .quick-label { color: var(--muted); font-size: .79rem; text-transform: uppercase; letter-spacing: .08em; }
+    .quick-value { margin-top: 4px; font-weight: 700; }
+
+    section { padding: 74px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    .section-kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: .77rem; font-weight: 800; }
+    h2 { margin: 5px 0 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
+    .section-desc { color: var(--muted); max-width: 560px; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+    .stat {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .stat strong { display: block; font-size: 1.75rem; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: .9rem; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,29,49,.82), rgba(10,22,37,.86));
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.14);
+    }
+    .card h3 { margin: 5px 0 10px; font-size: 1.3rem; letter-spacing: -.025em; }
+    .card p { color: var(--muted); margin: 0 0 18px; }
+    .card-link { color: var(--accent); font-weight: 750; font-size: .93rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      padding: 6px 9px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      color: #c8d2e0;
+      font-size: .78rem;
+      font-weight: 650;
+    }
+
+    .research-card {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .research-visual {
+      min-height: 300px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(125,211,252,.07), rgba(167,243,208,.03)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 62px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 1px 48px),
+        #0a1524;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    .research-copy { padding: 8px 0; }
+    .research-copy h3 { font-size: 1.7rem; letter-spacing: -.035em; margin: 0 0 13px; }
+    .research-copy p { color: var(--muted); }
+
+    .bullets { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+    .bullets li { color: #d4dce8; padding-left: 22px; position: relative; }
+    .bullets li::before { content: ""; position: absolute; left: 0; top: .72em; width: 7px; height: 7px; border-radius: 99px; background: var(--accent-2); }
+
+    .timeline { display: grid; gap: 14px; }
+    .role {
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+    .role:first-child { border-top: 0; padding-top: 0; }
+    .role-date { color: var(--muted); font-size: .9rem; }
+    .role-title { font-size: 1.15rem; font-weight: 800; }
+    .role-org { color: var(--accent); font-weight: 650; margin: 2px 0 7px; }
+    .role-desc { color: var(--muted); }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-group { padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.025); }
+    .skill-group h3 { margin: 0 0 12px; font-size: 1rem; }
+    .skill-group p { margin: 0; color: var(--muted); }
+
+    .contact-box {
+      padding: 36px;
+      border-radius: 24px;
+      border: 1px solid rgba(125,211,252,.16);
+      background: linear-gradient(135deg, rgba(125,211,252,.08), rgba(167,243,208,.05));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+    }
+    .contact-box h2 { margin-bottom: 10px; }
+    .contact-box p { color: var(--muted); margin: 0; }
+
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .research-card { grid-template-columns: 1fr; }
+      .hero-card { max-width: 620px; }
+      .grid-3, .skills-grid { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links a:not(.keep) { display: none; }
+      .hero { padding-top: 66px; }
+      .grid-3, .skills-grid, .stats { grid-template-columns: 1fr; }
+      .role { grid-template-columns: 1fr; gap: 4px; }
+      .section-head, .contact-box { align-items: flex-start; flex-direction: column; }
+      .container { width: min(var(--max), calc(100% - 28px)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="#top"><span class="brand-mark">AJ</span>Akaki Jvarsheishvili</a>
+        <div class="nav-links">
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a class="keep" href="Akaki_Jvarsheishvili_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">ML / AI Engineer · Quantitative Research</div>
+          <h1>Building systems that turn <span>messy signals</span> into useful decisions.</h1>
+          <p class="hero-copy">
+            Computer Science senior and Mathematics minor at Caldwell University working across machine learning,
+            quantitative research, and backend systems. I build end-to-end projects that combine rigorous validation,
+            production-oriented engineering, and explainable decision pipelines.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View selected work</a>
+            <a class="btn" href="https://github.com/akoK3" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://linkedin.com/in/akaki-jvarsheishvili" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="mailto:ajvarsheishvili@caldwell.edu">Email</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick profile">
+          <div class="monogram">AJ</div>
+          <div class="quick-list">
+            <div class="quick-item">
+              <div class="quick-label">Focus</div>
+              <div class="quick-value">Machine Learning · AI · Quant Research</div>
+            </div>
+            <div class="quick-item">
+              <div class="quick-label">Education</div>
+              <div class="quick-value">B.S. Computer Science · Math Minor</div>
+            </div>
+            <div class="quick-item">
+              <div class="quick-label">Current</div>
+              <div class="quick-value">Undergraduate Researcher + Teaching Assistant</div>
+            </div>
+            <div class="quick-item">
+              <div class="quick-label">Graduation</div>
+              <div class="quick-value">May 2027</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section aria-label="Highlights">
+      <div class="container">
+        <div class="stats">
+          <div class="stat"><strong>78%</strong><span>Macro F1 — MarketRegimeAI Random Forest</span></div>
+          <div class="stat"><strong>101</strong><span>Confirmed SPY transitions in current research analysis</span></div>
+          <div class="stat"><strong>25+</strong><span>Engineered features across trend, momentum, volatility & volume</span></div>
+          <div class="stat"><strong>95%</strong><span>Repeat-query API reduction via MarketLens caching</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Research</div>
+            <h2>Cross-asset regime transitions</h2>
+          </div>
+          <p class="section-desc">Ongoing quantitative-finance research on whether confirmed equity-market state shifts carry useful lead-lag information across other asset classes.</p>
+        </div>
+
+        <div class="research-card">
+          <div class="research-visual" aria-hidden="true">
+            <svg viewBox="0 0 700 320" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineA" x1="0" x2="1">
+                  <stop offset="0" stop-color="#7dd3fc"/>
+                  <stop offset="1" stop-color="#a7f3d0"/>
+                </linearGradient>
+              </defs>
+              <polyline points="0,210 60,198 105,228 150,180 205,190 250,146 300,170 355,112 410,128 470,92 525,116 590,72 650,84 700,52" fill="none" stroke="url(#lineA)" stroke-width="4" opacity=".9"/>
+              <polyline points="0,248 60,242 105,250 150,236 205,225 250,230 300,208 355,215 410,184 470,196 525,164 590,172 650,142 700,150" fill="none" stroke="#f4f7fb" stroke-width="2" opacity=".35"/>
+              <line x1="355" y1="35" x2="355" y2="285" stroke="#a7f3d0" stroke-width="2" stroke-dasharray="8 8" opacity=".85"/>
+              <text x="369" y="57" fill="#a7f3d0" font-size="18" font-family="system-ui">confirmed transition T</text>
+            </svg>
+          </div>
+          <div class="research-copy">
+            <h3>Do equity-market signals predict cross-asset movement?</h3>
+            <p>
+              The study uses Hidden Markov Models to detect structural transitions in SPY, then evaluates how Treasury bonds,
+              high-yield credit, gold, and the U.S. dollar behave around the confirmed event time. The core question is whether
+              other markets have already adjusted, move concurrently, or retain measurable post-confirmation movement.
+            </p>
+            <ul class="bullets">
+              <li>Strict walk-forward, no-lookahead inference with rolling state alignment and transition confirmation logic.</li>
+              <li>Daily analysis completed across 101 confirmed SPY transitions; intraday extension and vendor validation underway.</li>
+              <li>Preliminary findings show cross-asset differences in GLD and DXY responses at longer horizons; statistical interpretation remains deliberately cautious.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Hidden Markov Models</span><span class="tag">Time Series</span><span class="tag">Event Study</span><span class="tag">Bootstrap</span><span class="tag">Permutation Testing</span><span class="tag">Bloomberg Terminal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Selected work</div>
+            <h2>Projects built end to end</h2>
+          </div>
+          <p class="section-desc">From model design and validation to APIs, databases, alerting, and user-facing interfaces.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="section-kicker">Machine learning</div>
+            <h3>MarketRegimeAI</h3>
+            <p>
+              Financial regime-classification pipeline built on 25 years of SPY data. Uses ATR-normalized dynamic labels,
+              25+ engineered technical features, walk-forward validation, and four model families. Random Forest reached 78% Macro F1.
+            </p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">pandas</span></div>
+            <p style="margin-top:18px"><a class="card-link" href="https://github.com/akoK3/MarketRegimeAI_" target="_blank" rel="noopener">View repository →</a></p>
+          </article>
+
+          <article class="card">
+            <div class="section-kicker">AI + backend</div>
+            <h3>MarketLens</h3>
+            <p>
+              Market-intelligence platform combining real-time data pipelines, LLM-based analysis, SQLite caching,
+              anomaly detection, and automated alerts. Repeat-query caching reduced external API calls by about 95%.
+            </p>
+            <div class="tags"><span class="tag">Flask</span><span class="tag">Claude API</span><span class="tag">SQLite</span><span class="tag">Plotly.js</span><span class="tag">REST APIs</span></div>
+            <p style="margin-top:18px"><a class="card-link" href="https://github.com/akoK3/MarketLens" target="_blank" rel="noopener">View repository →</a></p>
+          </article>
+
+          <article class="card">
+            <div class="section-kicker">Research engineering</div>
+            <h3>Cross-Asset Signal Framework</h3>
+            <p>
+              Reproducible HMM + event-study research pipeline with online inference, state alignment, confidence/persistence filters,
+              baseline construction, event paths, and statistical significance testing across multiple asset classes.
+            </p>
+            <div class="tags"><span class="tag">HMM</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">SciPy</span><span class="tag">Quant Research</span></div>
+            <p style="margin-top:18px"><span class="card-link">Manuscript in progress</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Experience</div>
+            <h2>Research, teaching, and engineering</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="role">
+            <div class="role-date">Nov 2025 — Present</div>
+            <div>
+              <div class="role-title">Undergraduate Researcher</div>
+              <div class="role-org">Caldwell University · STEM Advance Research Program</div>
+              <div class="role-desc">Designing and validating a cross-asset quantitative research framework using HMM-detected equity regime transitions and statistically controlled event analysis.</div>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Sep 2026 — Present</div>
+            <div>
+              <div class="role-title">Teaching Assistant — Data Structures & Algorithms</div>
+              <div class="role-org">Caldwell University</div>
+              <div class="role-desc">Support 30+ students across Data Structures and Design & Analysis of Algorithms through in-class instruction and weekly office hours.</div>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Feb 2026 — Present</div>
+            <div>
+              <div class="role-title">Peer Tutor — Data Structures & Algorithms</div>
+              <div class="role-org">Caldwell University</div>
+              <div class="role-desc">Tutor 15+ students weekly on complexity analysis, recursion, trees, graphs, and algorithmic problem solving in Python.</div>
+            </div>
+          </div>
+          <div class="role">
+            <div class="role-date">Jan 2024 — Sep 2024</div>
+            <div>
+              <div class="role-title">Help Desk Technician</div>
+              <div class="role-org">Caldwell University</div>
+              <div class="role-desc">Handled 20–24 service requests per day, coordinating access, account, and technology issues across students and university departments.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Technical toolkit</div>
+            <h2>Skills</h2>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group"><h3>Machine Learning</h3><p>scikit-learn · XGBoost · NumPy · Pandas · Optuna · time-series validation</p></div>
+          <div class="skill-group"><h3>Programming</h3><p>Python · SQL · JavaScript · Node.js · Express.js · REST APIs</p></div>
+          <div class="skill-group"><h3>Backend & Data</h3><p>Flask · PostgreSQL · MySQL · MongoDB · SQLite · API integration</p></div>
+          <div class="skill-group"><h3>Visualization</h3><p>Matplotlib · Plotly.js · quantitative diagnostics · event-study analysis</p></div>
+          <div class="skill-group"><h3>Finance & Research</h3><p>Bloomberg Terminal · HMMs · regime analysis · statistical testing · backtesting</p></div>
+          <div class="skill-group"><h3>Tools</h3><p>Git · GitHub · Jupyter Notebook · reproducible ML workflows</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Let’s build something rigorous.</h2>
+            <p>Open to machine-learning, AI engineering, quantitative research, and software-engineering opportunities.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="mailto:ajvarsheishvili@caldwell.edu">Email me</a>
+            <a class="btn" href="Akaki_Jvarsheishvili_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Akaki Jvarsheishvili</span>
+      <span>Caldwell, New Jersey · GitHub: @akoK3</span>
+    </div>
+  </footer>
+</body>
 </html>
